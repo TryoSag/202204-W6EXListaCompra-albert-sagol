@@ -54,6 +54,14 @@ const StyledPrice = styled.span`
 const List = () => {
   const list = useSelector((state) => state.list);
 
+  const total = () => {
+    let finalPrice = 0;
+    list.forEach((item) => {
+      finalPrice += item.price;
+    });
+    return finalPrice;
+  };
+
   return (
     <>
       {list.map((item) => {
@@ -74,7 +82,7 @@ const List = () => {
           </StyledArticles>
         );
       })}
-      <StyledTotal className="col-12 text-end">1.95€</StyledTotal>
+      <StyledTotal className="col-12 text-end">{total()}€</StyledTotal>
     </>
   );
 };
